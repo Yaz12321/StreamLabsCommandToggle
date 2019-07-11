@@ -1,0 +1,110 @@
+﻿{
+  "output_file": "settings.json",
+    "OnlyLive": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Only when live",
+    "tooltip": "Command is only active when stream is live",
+  	"group": "General"
+  },
+    "Command": {
+    "type": "textbox",
+    "value": "!command",
+  	"label": "Command Name",
+    "tooltip": "The command the bot will respond to",
+  	"group": "General"
+  },
+    "OnC": {
+    "type": "textbox",
+    "value": "on",
+    "label": "On command",
+    "tooltip": "Parameter to toggle command On",
+    "group": "General"
+  },
+    "OffC": {
+    "type": "textbox",
+    "value": "off",
+    "label": "Off command",
+    "tooltip": "Parameter to toggle command Off",
+    "group": "General"
+  },
+    "Permission": {
+    "type": "dropdown",
+    "value": "Everyone",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "Permission level",
+    "tooltip": "Set the permission level for the command",
+    "group": "General"
+  },
+    "PermissionInfo": {
+    "type": "textbox",
+    "value": "",
+    "label": "Permission level info",
+    "tooltip": "Set the user, rank or tier for permission",
+    "group": "General"
+  },
+    "UseCD": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Use Cooldown Messages",
+    "tooltip": "Enable/Disable cooldown messages",
+  	"group": "Cooldown"
+  },
+    "Cooldown": {
+    "type": "numberbox",
+  	"label": "Cooldown (seconds)",
+    "value": 0,
+    "tooltip": "Cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+   "OnCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on cooldown for {1} seconds!",
+  	"label": "Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown"
+  },
+    "UserCooldown": {
+    "type": "numberbox",
+  	"label": "User Cooldown (seconds)",
+    "value": 0,
+    "tooltip": "User cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+    "OnUserCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on user cooldown for {1} seconds!",
+  	"label": "User Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
+   	"group": "Cooldown"
+  },
+    "ToggleMsg": {
+    "type": "textbox",
+    "value": "Command has been turned {0}",
+    "label": "Message when command has been toggled",
+    "tooltip": "{0} = Toggle Status ",
+    "group": "Responses"
+  },
+    "OnMsg": {
+    "type": "textbox",
+    "value": "Command is enabled",
+    "label": "On Message",
+    "tooltip": "Response for when command is enabled",
+    "group": "Responses"
+  },
+    "OffMsg": {
+    "type": "textbox",
+    "value": "Command is disabled",
+    "label": "Off Message",
+    "tooltip": "Response for when command is disabled",
+    "group": "Responses"
+  },
+    "NotEnoughResponse": {
+    "type": "textbox",
+    "value": "{0} you don't have enough {1}! {2} costs {3} {1} ",
+    "label": "Not enough currency response",
+    "tooltip": "Message sent when user doesn't have enough points! \r\n {0} = user \r\n {1} = Currency name \r\n {2} = command name \r\n {3} = command cost",
+    "group": "Responses"
+  },
+
+}
