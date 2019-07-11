@@ -33,7 +33,7 @@
     "value": "Everyone",
     "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
     "label": "Permission level",
-    "tooltip": "Set the permission level for the command",
+    "tooltip": "Set the permission level to toggle the command",
     "group": "General"
   },
     "PermissionInfo": {
