@@ -21,7 +21,7 @@ from datetime import datetime, timedelta
 ScriptName = "CommandToggle"
 Website = "https://github.com/Yaz12321"
 Creator = "Yaz12321"
-Version = "0.1"
+Version = "0.2"
 Description = "Allow mods to toggle between responses for a command"
 
 settingsFile = os.path.join(os.path.dirname(__file__), "settings.json")
@@ -32,8 +32,11 @@ settingsFile = os.path.join(os.path.dirname(__file__), "settings.json")
 
 # Version:
 
-# > 1.0 <
-    # Official Release
+# > 0.2 <
+    # Bug fixed
+
+# > 0.1 <
+    # Initial Release
 
 #---------------------------------------
 #    Load and Define Settings
@@ -253,35 +256,38 @@ def Execute(data): # Handle chat messages. Function is called whenever there is 
                         Parent.SendTwitchMessage(MySettings.OnUserCooldown.format(data.User,m_CooldownRemaining))
 
             else:
+                if data.GetParam(1)!= "":
+                    param = data.GetParam(1).lower()
+                else:
+                    param = False
                 
-                
-                if data.GetParam(1).lower()==MySettings.OnC.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                if param==MySettings.OnC.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
                     global r
                     r = MySettings.OnC
                     twitchmsg(MySettings.ToggleMsg.format(r))
 
 
                 else:
-                    if data.GetParam(1).lower()==MySettings.OffC.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                    if param==MySettings.OffC.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
                         
                         global r
                         r = MySettings.OffC
                         twitchmsg(MySettings.ToggleMsg.format(r))
                     else:
-                        if data.GetParam(1).lower()==MySettings.R3C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                        if param==MySettings.R3C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
                         
                             global r
                             r = MySettings.R3C
                             twitchmsg(MySettings.ToggleMsg.format(r))
 
                         else:
-                            if data.GetParam(1).lower()==MySettings.R4C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                            if param ==MySettings.R4C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
                         
                                 global r
                                 r = MySettings.R4C
                                 twitchmsg(MySettings.ToggleMsg.format(r))                            
                             else:
-                                if data.GetParam(1).lower()==MySettings.R5C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                                if param ==MySettings.R5C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
                         
                                     global r
                                     r = MySettings.R5C
