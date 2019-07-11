@@ -14,20 +14,42 @@
     "tooltip": "The command the bot will respond to",
   	"group": "General"
   },
-    "OnC": {
-    "type": "textbox",
-    "value": "on",
-    "label": "On command",
-    "tooltip": "Parameter to toggle command On",
-    "group": "General"
-  },
     "OffC": {
     "type": "textbox",
-    "value": "off",
-    "label": "Off command",
-    "tooltip": "Parameter to toggle command Off",
+    "value": "R1",
+    "label": "R1 command",
+    "tooltip": "Parameter to toggle command to response 1",
     "group": "General"
   },
+    "OnC": {
+    "type": "textbox",
+    "value": "R2",
+    "label": "R2 command",
+    "tooltip": "Parameter to toggle command to response 2",
+    "group": "General"
+  },
+    "R3C": {
+    "type": "textbox",
+    "value": "R3",
+    "label": "R3 command",
+    "tooltip": "Parameter to toggle command to response 3",
+    "group": "General"
+  },
+    "R4C": {
+    "type": "textbox",
+    "value": "R4",
+    "label": "R4 command",
+    "tooltip": "Parameter to toggle command to response 4",
+    "group": "General"
+  },
+    "R5C": {
+    "type": "textbox",
+    "value": "R5",
+    "label": "R5 command",
+    "tooltip": "Parameter to toggle command to response 5",
+    "group": "General"
+  },
+
     "Permission": {
     "type": "dropdown",
     "value": "Everyone",
@@ -80,23 +102,44 @@
   },
     "ToggleMsg": {
     "type": "textbox",
-    "value": "Command has been turned {0}",
+    "value": "Command has been set to {0}",
     "label": "Message when command has been toggled",
     "tooltip": "{0} = Toggle Status ",
     "group": "Responses"
   },
-    "OnMsg": {
-    "type": "textbox",
-    "value": "Command is enabled",
-    "label": "On Message",
-    "tooltip": "Response for when command is enabled",
-    "group": "Responses"
-  },
     "OffMsg": {
     "type": "textbox",
-    "value": "Command is disabled",
-    "label": "Off Message",
-    "tooltip": "Response for when command is disabled",
+    "value": "Response 1",
+    "label": "R1 Message",
+    "tooltip": "Response for when command is set to R1",
+    "group": "Responses"
+  },
+    "OnMsg": {
+    "type": "textbox",
+    "value": "Response 2",
+    "label": "R2 Message",
+    "tooltip": "Response for when command is set to R2",
+    "group": "Responses"
+  },
+    "R3Msg": {
+    "type": "textbox",
+    "value": "Response 3",
+    "label": "R3 Message",
+    "tooltip": "Response for when command is set to R3",
+    "group": "Responses"
+  },
+    "R4Msg": {
+    "type": "textbox",
+    "value": "Response 4",
+    "label": "R4 Message",
+    "tooltip": "Response for when command is set to R4",
+    "group": "Responses"
+  },
+    "R5Msg": {
+    "type": "textbox",
+    "value": "Response 5",
+    "label": "R5 Message",
+    "tooltip": "Response for when command is set to R5",
     "group": "Responses"
   },
     "NotEnoughResponse": {

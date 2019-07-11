@@ -60,8 +60,15 @@ class Settings:
             self.ToggleMsg = "Command has been turned {0}"
             self.OnMsg = "Command is enabled"
             self.OffMsg = "Command is disabled"
+            self.R3Msg = "Response 3"
+            self.R4Msg = "Response 3"
+            self.R5Msg = "Response 3"
             self.OnC = "on"
             self.OffC = "off"
+            self.R3C = "R3"
+            self.R4C = "R4"
+            self.R5C = "R5"
+            
 
 
 
@@ -260,14 +267,41 @@ def Execute(data): # Handle chat messages. Function is called whenever there is 
                         global r
                         r = MySettings.OffC
                         twitchmsg(MySettings.ToggleMsg.format(r))
-
-
-
                     else:
-                        if r == MySettings.OnC:
-                            twitchmsg(MySettings.OnMsg)
+                        if data.GetParam(1).lower()==MySettings.R3C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                        
+                            global r
+                            r = MySettings.R3C
+                            twitchmsg(MySettings.ToggleMsg.format(r))
+
                         else:
-                            twitchmsg(MySettings.OffMsg)
+                            if data.GetParam(1).lower()==MySettings.R4C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                        
+                                global r
+                                r = MySettings.R4C
+                                twitchmsg(MySettings.ToggleMsg.format(r))                            
+                            else:
+                                if data.GetParam(1).lower()==MySettings.R5C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                        
+                                    global r
+                                    r = MySettings.R5C
+                                    twitchmsg(MySettings.ToggleMsg.format(r))  
+
+
+                                else:
+                                    if r == MySettings.OnC:
+                                        twitchmsg(MySettings.OnMsg)
+                                    else:
+                                        if r == MySettings.OffC:
+                                            twitchmsg(MySettings.OffMsg)
+                                        else:
+                                            if r == MySettings.R3C:
+                                                twitchmsg(MySettings.R3Msg)
+                                            else:
+                                                if r == MySettings.R4C:
+                                                    twitchmsg(MySettings.R4Msg)
+                                                else:
+                                                    twitchmsg(MySettings.R5Msg)
                         
                     
                 Parent.AddUserCooldown(ScriptName,MySettings.Command,data.User,MySettings.UserCooldown)
