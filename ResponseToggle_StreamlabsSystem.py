@@ -92,7 +92,7 @@ def Init():
     MySettings = Settings(settingsFile)
 
     global r
-    r = "OFF"
+    r = MySettings.OffC
     # End of Init
     return
 
@@ -250,7 +250,7 @@ def Execute(data): # Handle chat messages. Function is called whenever there is 
                 
                 if data.GetParam(1).lower()==MySettings.OnC.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
                     global r
-                    r = "ON"
+                    r = MySettings.OnC
                     twitchmsg(MySettings.ToggleMsg.format(r))
 
 
@@ -258,13 +258,13 @@ def Execute(data): # Handle chat messages. Function is called whenever there is 
                     if data.GetParam(1).lower()==MySettings.OffC.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
                         
                         global r
-                        r = "OFF"
+                        r = MySettings.OffC
                         twitchmsg(MySettings.ToggleMsg.format(r))
 
 
 
                     else:
-                        if r == "ON":
+                        if r == MySettings.OnC:
                             twitchmsg(MySettings.OnMsg)
                         else:
                             twitchmsg(MySettings.OffMsg)
