@@ -61,13 +61,13 @@ class Settings:
             self.OnUserCooldown = "{0} the command is still on user cooldown for {1} seconds!"
             self.NotEnoughResponse = "{0} you don't have enough points to run command"
             self.ToggleMsg = "Command has been turned {0}"
-            self.OnMsg = "Command is enabled"
-            self.OffMsg = "Command is disabled"
+            self.R2Msg = "Command is enabled"
+            self.R1Msg = "Command is disabled"
             self.R3Msg = "Response 3"
             self.R4Msg = "Response 3"
             self.R5Msg = "Response 3"
-            self.OnC = "on"
-            self.OffC = "off"
+            self.R1C = "off"
+            self.R2C = "on"
             self.R3C = "R3"
             self.R4C = "R4"
             self.R5C = "R5"
@@ -102,7 +102,7 @@ def Init():
     MySettings = Settings(settingsFile)
 
     global r
-    r = MySettings.OffC
+    r = MySettings.R1C
     # End of Init
     return
 
@@ -218,12 +218,36 @@ def find_min_index(lst,Index): # Index is bool: True: return random from list, F
     else:
         return Winners
 
+def EditResponse(message):
+    Resp = message.split(" ",3)
+    RtoE = Resp[2]
+    NewR = Resp[3]
+##    sfile = open("{}/settings.json".format(path()),"r+")
+##
+##    Sett = sfile.read()
+##    sfile.close()
+    if RtoE in MySettings: 
+        MySettings[RtoE] = NewR
+        sfile = open("{}/settings.json".format(path()),"w+")
+        sfile.write(Sett)
+        sffile.close()
+        twitchmsg("{} has been edited to {}".format(RtoE,NewR))
+        ReloadSettings(Sett)
+    else:
+        twitchmsg("{} is not a valid setting".format(RtoE))
+
+    
+    return
+    
+
 def Execute(data): # Handle chat messages. Function is called whenever there is a message in chat.
                     # data objects only work here.
     try: # In case of error, it will skip to except
         if data.IsChatMessage() and data.GetParam(0).lower() == MySettings.Command.lower():
             global startCheck
             startCheck = CheckLive()
+        else:
+            startCheck = False
 
 
         #check if user has permission
@@ -260,54 +284,59 @@ def Execute(data): # Handle chat messages. Function is called whenever there is 
                     param = data.GetParam(1).lower()
                 else:
                     param = False
+
+                if param==MySettings.REdit.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                    EditResponse(data.Message)
+
+                else:                 
                 
-                if param==MySettings.OnC.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
-                    global r
-                    r = MySettings.OnC
-                    twitchmsg(MySettings.ToggleMsg.format(r))
-
-
-                else:
-                    if param==MySettings.OffC.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
-                        
+                    if param==MySettings.R1C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
                         global r
-                        r = MySettings.OffC
+                        r = MySettings.R1C
                         twitchmsg(MySettings.ToggleMsg.format(r))
+
+
                     else:
-                        if param==MySettings.R3C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
-                        
+                        if param==MySettings.R2C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                            
                             global r
-                            r = MySettings.R3C
+                            r = MySettings.R2C
                             twitchmsg(MySettings.ToggleMsg.format(r))
-
                         else:
-                            if param ==MySettings.R4C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
-                        
+                            if param==MySettings.R3C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                            
                                 global r
-                                r = MySettings.R4C
-                                twitchmsg(MySettings.ToggleMsg.format(r))                            
+                                r = MySettings.R3C
+                                twitchmsg(MySettings.ToggleMsg.format(r))
+
                             else:
-                                if param ==MySettings.R5C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
-                        
+                                if param ==MySettings.R4C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                            
                                     global r
-                                    r = MySettings.R5C
-                                    twitchmsg(MySettings.ToggleMsg.format(r))  
-
-
+                                    r = MySettings.R4C
+                                    twitchmsg(MySettings.ToggleMsg.format(r))                            
                                 else:
-                                    if r == MySettings.OnC:
-                                        twitchmsg(MySettings.OnMsg)
+                                    if param ==MySettings.R5C.lower() and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                            
+                                        global r
+                                        r = MySettings.R5C
+                                        twitchmsg(MySettings.ToggleMsg.format(r))  
+
+
                                     else:
-                                        if r == MySettings.OffC:
-                                            twitchmsg(MySettings.OffMsg)
+                                        if r == MySettings.R1C:
+                                            twitchmsg(MySettings.R1Msg)
                                         else:
-                                            if r == MySettings.R3C:
-                                                twitchmsg(MySettings.R3Msg)
+                                            if r == MySettings.R2C:
+                                                twitchmsg(MySettings.R2Msg)
                                             else:
-                                                if r == MySettings.R4C:
-                                                    twitchmsg(MySettings.R4Msg)
+                                                if r == MySettings.R3C:
+                                                    twitchmsg(MySettings.R3Msg)
                                                 else:
-                                                    twitchmsg(MySettings.R5Msg)
+                                                    if r == MySettings.R4C:
+                                                        twitchmsg(MySettings.R4Msg)
+                                                    else:
+                                                        twitchmsg(MySettings.R5Msg)
                         
                     
                 Parent.AddUserCooldown(ScriptName,MySettings.Command,data.User,MySettings.UserCooldown)
