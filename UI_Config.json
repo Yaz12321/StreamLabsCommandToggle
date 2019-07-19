@@ -14,14 +14,21 @@
     "tooltip": "The command the bot will respond to",
   	"group": "General"
   },
-    "OffC": {
+    "REdit": {
+    "type": "textbox",
+    "value": "edit",
+  	"label": "Parameter to edit",
+    "tooltip": "Parameter to edit responses via chat (NOT FUNCTIONAL YET)",
+  	"group": "General"
+  },
+    "R1C": {
     "type": "textbox",
     "value": "R1",
     "label": "R1 command",
     "tooltip": "Parameter to toggle command to response 1",
     "group": "General"
   },
-    "OnC": {
+    "R2C": {
     "type": "textbox",
     "value": "R2",
     "label": "R2 command",
@@ -107,14 +114,14 @@
     "tooltip": "{0} = Toggle Status ",
     "group": "Responses"
   },
-    "OffMsg": {
+    "R1Msg": {
     "type": "textbox",
     "value": "Response 1",
     "label": "R1 Message",
     "tooltip": "Response for when command is set to R1",
     "group": "Responses"
   },
-    "OnMsg": {
+    "R2Msg": {
     "type": "textbox",
     "value": "Response 2",
     "label": "R2 Message",
