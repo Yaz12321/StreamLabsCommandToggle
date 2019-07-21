@@ -71,6 +71,7 @@ class Settings:
             self.R3C = "R3"
             self.R4C = "R4"
             self.R5C = "R5"
+            self.ResponseList = "list"
             
 
 
@@ -320,23 +321,27 @@ def Execute(data): # Handle chat messages. Function is called whenever there is 
                             
                                         global r
                                         r = MySettings.R5C
-                                        twitchmsg(MySettings.ToggleMsg.format(r))  
-
-
+                                        twitchmsg(MySettings.ToggleMsg.format(r))
                                     else:
-                                        if r == MySettings.R1C:
-                                            twitchmsg(MySettings.R1Msg)
+                                        if param == MySettings.ResponseList and Parent.HasPermission(data.User, MySettings.Permission, MySettings.PermissionInfo):
+                                            RCList = MySettings.Command + ": " + MySettings.R1C + ", " + MySettings.R2C + ", " + MySettings.R3C + ", " + MySettings.R4C + ", " + MySettings.R5C + "."
+                                            whisper(data.User, RCList)
+
+
                                         else:
-                                            if r == MySettings.R2C:
-                                                twitchmsg(MySettings.R2Msg)
+                                            if r == MySettings.R1C:
+                                                twitchmsg(MySettings.R1Msg)
                                             else:
-                                                if r == MySettings.R3C:
-                                                    twitchmsg(MySettings.R3Msg)
+                                                if r == MySettings.R2C:
+                                                    twitchmsg(MySettings.R2Msg)
                                                 else:
-                                                    if r == MySettings.R4C:
-                                                        twitchmsg(MySettings.R4Msg)
+                                                    if r == MySettings.R3C:
+                                                        twitchmsg(MySettings.R3Msg)
                                                     else:
-                                                        twitchmsg(MySettings.R5Msg)
+                                                        if r == MySettings.R4C:
+                                                            twitchmsg(MySettings.R4Msg)
+                                                        else:
+                                                            twitchmsg(MySettings.R5Msg)
                         
                     
                 Parent.AddUserCooldown(ScriptName,MySettings.Command,data.User,MySettings.UserCooldown)

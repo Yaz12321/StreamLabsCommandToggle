@@ -21,6 +21,13 @@
     "tooltip": "Parameter to edit responses via chat (NOT FUNCTIONAL YET)",
   	"group": "General"
   },
+    "ResponseList": {
+    "type": "textbox",
+    "value": "list",
+  	"label": "List of responses",
+    "tooltip": "Parameter to receive a list of all possible responses",
+  	"group": "General"
+  },
     "R1C": {
     "type": "textbox",
     "value": "R1",
